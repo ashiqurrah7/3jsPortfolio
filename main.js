@@ -1,7 +1,9 @@
 import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import spaceImg from './space.jpg'
+import moonImg from './moon.jpg'
+import normalImg from './normal.jpg'
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(90, window.innerWidth/ window.innerHeight, 0.1, 1000);
@@ -45,11 +47,11 @@ function addStar(){
 
 Array(400).fill().forEach(addStar);
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load(spaceImg);
 scene.background = spaceTexture;
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const moonTexture = new THREE.TextureLoader().load(moonImg);
+const normalTexture = new THREE.TextureLoader().load(normalImg);
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3,32,32),

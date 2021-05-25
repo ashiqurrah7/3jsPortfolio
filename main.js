@@ -1,5 +1,5 @@
 import './style.css'
-import * as THREE from 'three';
+import * as THREE from './node_modules/three/src/Three.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import spaceImg from './space.jpg'
 import moonImg from './moon.jpg'

@@ -4,6 +4,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import spaceImg from './space.jpg'
 import moonImg from './moon.jpg'
 import normalImg from './normal.jpg'
+import glowImg from './glow.png'
+import sunImg from './sun.jpg'
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
@@ -12,14 +14,25 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(60);
 renderer.render(scene,camera);
 
 const geometry = new THREE.SphereGeometry(10, 32, 32);
 const material = new THREE.MeshStandardMaterial({color: 0xffde3b});
 const sun = new THREE.Mesh(geometry, material);
-
 scene.add(sun);
+
+var spriteMaterial = new THREE.SpriteMaterial( 
+	{ 
+		map: new THREE.TextureLoader().load(glowImg),
+		useScreenCoordinates: false,
+		color: 0xffde3b, blending: THREE.AdditiveBlending
+	});
+	var sprite = new THREE.Sprite( spriteMaterial );
+	sprite.scale.set(45, 45, 1.0);
+	sun.add(sprite);
+
+
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0,0,0);
